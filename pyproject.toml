@@ -1,0 +1,10 @@
+[project]
+name = "cricket_project"
+version = "1.0.0"
+description = "Load, clean, store and analyse Cricsheet ball-by-ball data (NIB7143CEM coursework)"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"

@@ -1,0 +1,27 @@
+# Exact versions used to produce every number in the report.
+# Python 3.14.7, Windows 11. PySpark additionally needs a Java runtime (17+; tested with Java 25).
+#
+# Direct dependencies
+pandas==3.1.0
+numpy==2.5.4
+pyarrow==26.0.1
+scipy==1.18.1
+matplotlib==3.11.2
+pyspark==4.3.0
+pytest==9.2.0
+
+# Transitive dependencies (pinned so a clean install is identical)
+colorama==0.4.6
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+iniconfig==2.3.1
+kiwisolver==1.5.1
+packaging==26.3
+pillow==13.0.0
+pluggy==1.7.0
+py4j==0.10.9.9
+Pygments==2.21.0
+pyparsing==3.3.3
+python-dateutil==4.0.0
+tzdata==2026.6

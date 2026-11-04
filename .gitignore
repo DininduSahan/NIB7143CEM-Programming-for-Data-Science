@@ -1,0 +1,46 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+pytest-cache-files-*/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# --- Generated outputs (rebuilt by `python main.py ...`) -------------------
+# Large derived data files are not committed; the small tables and figures
+# under outputs/tables and outputs/figures are, so the report can cite them.
+outputs/data/
+outputs/benchmark_files/
+outputs/spark/
+
+# Spark / Hadoop local artefacts
+spark-warehouse/
+metastore_db/
+derby.log
+*.crc
+
+# --- Credentials and secrets: never commit ---------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*.*
+
+# --- Course material not ours to redistribute ------------------------------
+NIB7143CEM_Coursework*.pdf
+
+# --- Editors / OS ---------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
