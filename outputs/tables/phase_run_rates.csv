@@ -1,0 +1,13 @@
+match_type,phase,side,runs,balls,run_rate
+ODI,Powerplay,Opposition,23497,28894,4.88
+ODI,Powerplay,Sri Lanka,24044,28879,5.0
+ODI,Middle,Opposition,65473,78118,5.03
+ODI,Middle,Sri Lanka,65593,79668,4.94
+ODI,Death,Opposition,18629,15429,7.24
+ODI,Death,Sri Lanka,20832,18301,6.83
+T20,Powerplay,Opposition,10605,8382,7.59
+T20,Powerplay,Sri Lanka,10750,8321,7.75
+T20,Middle,Opposition,15363,12127,7.6
+T20,Middle,Sri Lanka,14570,12153,7.19
+T20,Death,Opposition,8417,5320,9.49
+T20,Death,Sri Lanka,8509,5749,8.88

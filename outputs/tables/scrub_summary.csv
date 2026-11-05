@@ -1,0 +1,5 @@
+measure,raw,clean
+rows,659890,659831
+columns,31,34
+distinct venues,170,106
+distinct cities,103,93

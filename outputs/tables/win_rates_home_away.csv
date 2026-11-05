@@ -1,0 +1,7 @@
+match_type,home,played,won,lost,draw,tie,win_pct
+ODI,False,296,129,164,0,3,43.6
+ODI,True,174,100,73,0,1,57.5
+T20,False,155,71,84,0,0,45.8
+T20,True,76,29,47,0,0,38.2
+Test,False,89,23,43,23,0,25.8
+Test,True,89,44,29,16,0,49.4

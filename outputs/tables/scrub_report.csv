@@ -1,0 +1,11 @@
+rule,problem,rows_affected,matches_affected,action,reason
+normalise_season,season stored as int for some matches and str for others,144097,183,converted every season to str,a mixed-type column cannot be written to Parquet and sorts inconsistently
+normalise_match_type,"two labels (T20, IT20) for the same 20-over international format",303,2,relabelled IT20 as T20,"playing conditions are identical; analysis is by format, not by ICC status"
+standardise_venue,"same ground recorded under several names (suffixes, renamings, spellings)",160831,267,mapped every variant to one canonical ground name,grouping by venue would otherwise split one ground's matches across up to four labels
+standardise_city,"city recorded under old and new names, or as an island/region instead of a city",43379,66,mapped to the current city name,Bangalore/Bengaluru etc. would otherwise count as two cities
+impute_city,city missing although the ground's city is known from other matches,127888,152,filled from the most common city recorded for the same ground,a ground does not move; leaving these blank would drop them from any home/away split
+fill_missing_event,event (series/tournament) name not recorded,2522,11,set to the literal '(not recorded)',keeps the rows; an explicit label stops groupby() silently dropping them
+remove_super_overs,super-over tie-breaker deliveries mixed in with regulation innings,59,6,removed from the deliveries table (match winner kept),a one-over tie-breaker is not part of an innings; it would distort per-innings totals and run rates
+flag_miscounted_overs,overs with more than six legal deliveries (umpire miscount),118,16,"kept, flagged with over_miscounted=True",the extra ball was really bowled and its runs count; deleting it would make totals wrong
+flag_non_dismissals,retired hurt / retired not out recorded in the wickets field,15,15,"kept, is_dismissal=False for those rows",counting them as dismissals inflates wicket counts and lowers batting averages
+check_runs_consistency,runs_total differs from runs_batter + runs_extras,0,0,recompute runs_total from its parts,the parts are recorded per event and are the more reliable source

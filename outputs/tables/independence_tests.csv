@@ -1,0 +1,10 @@
+match_type,factor,n,chi2,p_value,win_pct_if_true,win_pct_if_false,valid
+ODI,home,466,7.718,0.0055,57.8,44.0,True
+T20,home,231,0.924,0.3365,38.2,45.8,True
+Test,home,139,7.985,0.0047,60.3,34.8,True
+ODI,won_toss,466,0.0,0.9924,49.4,48.9,True
+T20,won_toss,231,0.511,0.4749,40.4,45.9,True
+Test,won_toss,139,2.813,0.0935,55.1,39.3,True
+ODI,batted_first,466,0.002,0.9626,48.9,49.5,True
+T20,batted_first,231,0.185,0.6674,41.6,45.3,True
+Test,batted_first,139,1.662,0.1973,54.2,41.8,True

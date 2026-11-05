@@ -1,0 +1,10 @@
+{
+  "python": "3.14.7",
+  "os": "Windows 11 (10.0.26200)",
+  "machine": "AMD64",
+  "processor": "AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD",
+  "logical_cpus": "16",
+  "pandas": "3.1.0",
+  "numpy": "2.5.4",
+  "pyarrow": "26.0.1"
+}
