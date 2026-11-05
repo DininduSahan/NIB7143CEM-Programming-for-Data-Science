@@ -1,0 +1,7 @@
+{
+  "cores": 16,
+  "spark_startup_s": 17.44,
+  "spark_matches_pandas": true,
+  "spark_tuned_startup_s": 0.4,
+  "spark_tuned_matches_pandas": true
+}
