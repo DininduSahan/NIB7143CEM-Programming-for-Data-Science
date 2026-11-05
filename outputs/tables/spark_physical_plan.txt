@@ -1,0 +1,52 @@
+== Physical Plan ==
+* Project (8)
++- * HashAggregate (7)
+   +- Exchange (6)
+      +- * HashAggregate (5)
+         +- * Project (4)
+            +- * Filter (3)
+               +- * ColumnarToRow (2)
+                  +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [5]: [match_type#831, over#832, batting_team#833, runs_total#834, is_legal_ball#835]
+Batched: true
+Location: InMemoryFileIndex [NIB7143CEM-Programming-for-Data-Science/outputs/spark/stage_input_x1.parquet]
+PushedFilters: [In(match_type, [ODI,T20])]
+ReadSchema: struct<match_type:string,over:int,batting_team:string,runs_total:int,is_legal_ball:boolean>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [5]: [match_type#831, over#832, batting_team#833, runs_total#834, is_legal_ball#835]
+
+(3) Filter [codegen id : 1]
+Input [5]: [match_type#831, over#832, batting_team#833, runs_total#834, is_legal_ball#835]
+Condition : match_type#831 IN (ODI,T20)
+
+(4) Project [codegen id : 1]
+Output [5]: [match_type#831, runs_total#834, is_legal_ball#835, CASE WHEN (match_type#831 = ODI) THEN CASE WHEN (over#832 < 10) THEN Powerplay WHEN (over#832 < 40) THEN Middle ELSE Death END ELSE CASE WHEN (over#832 < 6) THEN Powerplay WHEN (over#832 < 15) THEN Middle ELSE Death END END AS phase#837, CASE WHEN (batting_team#833 = Sri Lanka) THEN Sri Lanka ELSE Opposition END AS side#838]
+Input [5]: [match_type#831, over#832, batting_team#833, runs_total#834, is_legal_ball#835]
+
+(5) HashAggregate [codegen id : 1]
+Input [5]: [match_type#831, runs_total#834, is_legal_ball#835, phase#837, side#838]
+Keys [3]: [match_type#831, phase#837, side#838]
+Functions [2]: [partial_sum(runs_total#834), partial_sum(cast(is_legal_ball#835 as int))]
+Aggregate Attributes [2]: [sum#851L, sum#852L]
+Results [5]: [match_type#831, phase#837, side#838, sum#853L, sum#854L]
+
+(6) Exchange
+Input [5]: [match_type#831, phase#837, side#838, sum#853L, sum#854L]
+Arguments: hashpartitioning(match_type#831, phase#837, side#838, 200), ENSURE_REQUIREMENTS, [plan_id=1714]
+
+(7) HashAggregate [codegen id : 2]
+Input [5]: [match_type#831, phase#837, side#838, sum#853L, sum#854L]
+Keys [3]: [match_type#831, phase#837, side#838]
+Functions [2]: [sum(runs_total#834), sum(cast(is_legal_ball#835 as int))]
+Aggregate Attributes [2]: [sum(runs_total#834)#848L, sum(cast(is_legal_ball#835 as int))#849L]
+Results [5]: [match_type#831, phase#837, side#838, sum(runs_total#834)#848L AS runs#839L, sum(cast(is_legal_ball#835 as int))#849L AS balls#840L]
+
+(8) Project [codegen id : 2]
+Output [6]: [match_type#831, phase#837, side#838, runs#839L, balls#840L, round((cast((runs#839L * 6) as double) / cast(balls#840L as double)), 2) AS run_rate#850]
+Input [5]: [match_type#831, phase#837, side#838, runs#839L, balls#840L]
+
+
