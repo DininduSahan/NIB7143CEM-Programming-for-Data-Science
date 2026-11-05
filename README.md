@@ -58,7 +58,7 @@ Tables are written to `outputs/tables/` and figures to `outputs/figures/`. The c
 * **Source:** Cricsheet, "Sri Lanka men" JSON archive, <https://cricsheet.org/downloads/sri_lanka_male_json.zip>. The format is described at <https://cricsheet.org/format/json/>.
 * **Licence:** Open Data Commons Attribution License (ODC-By 1.0). See `Data/Raw/LICENSE.txt`. The data is published by Cricsheet and is not scraped.
 * **Extract:** 904 matches (Tests, ODIs, T20Is) from 2002 to 22 Oct 2026, JSON format versions 1.2.0 and 1.3.0. It was committed to this repository on 2026-11-03.
-* **Immutability:** nothing under `Data/Raw/` is ever modified. The pipeline checks every file against `Data/raw_checksums.sha256` before loading and stops with `RawDataIntegrityError` if any file has changed. You can run the same check with `sha256sum -c` on Linux and macOS.
+* **Immutability:** nothing under `Data/Raw/` is ever modified. The pipeline checks every file against `Data/raw_checksums.sha256` before loading and stops with `RawDataIntegrityError` if any file has changed. You can run the same check with `sha256sum -c` on Linux and macOS. `.gitattributes` marks `Data/Raw/` as `-text`, so Git never converts line endings and the checksums match on every operating system.
 
 ## 5. Package design (Task 1)
 

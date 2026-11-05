@@ -1,0 +1,4 @@
+# Keep the raw extract byte-for-byte identical on every OS, so the SHA-256
+# manifest verifies after any clone (no CRLF/LF conversion).
+Data/Raw/** -text
+Data/raw_checksums.sha256 -text
